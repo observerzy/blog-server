@@ -9,6 +9,11 @@ export interface RouteItem {
 
 export const AppRoutes: RouteItem[] = [
     {
+        path: "/app/queryUserInfo",
+        method: "post",
+        action: TestController.test
+    },
+    {
         path: "/app/test",
         method: "get",
         action: TestController.test
