@@ -23,6 +23,8 @@
     "dependencies": {
         "koa-bodyparser": "^4.2.1",
         "koa-router": "^8.0.8",
-        "koa2-cors": "^2.0.6"
+        "koa2-cors": "^2.0.6",
+        "mysql2": "^2.1.0",
+        "typeorm": "^0.2.24"
     }
 }
