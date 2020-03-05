@@ -17,5 +17,15 @@ export const AppRoutes: RouteItem[] = [
         path: "/app/test",
         method: "get",
         action: TestController.test
+    },
+    {
+        path: "/app/register",
+        method: "post",
+        action: TestController.register
+    },
+    {
+        path: "/app/login",
+        method: "post",
+        action: TestController.login
     }
 ];
