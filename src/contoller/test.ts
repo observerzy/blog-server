@@ -34,6 +34,20 @@ class TestController {
         }
         ctx.body = makeRespData(res);
     }
+    async quertUserInfo(ctx: Context) {
+        const userRepository = getManager().getRepository(User);
+        const userInfo = await userRepository.findOne({
+            where: { id: 1 }
+        });
+        ctx.body = {
+            header: {
+                retCode: "0",
+                errorNo: "",
+                errorMsg: ""
+            },
+            body: userInfo
+        };
+    }
 }
 
 export default new TestController();
