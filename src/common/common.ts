@@ -1,6 +1,6 @@
-export const makeRespData = (body: any) => {
+export const makeRespData = (body: any, headerParams?: any) => {
     const header = {
-        retCode: "",
+        retCode: headerParams.retCode ? headerParams.retCode : "0",
         errorNo: "",
         errorMsg: ""
     };

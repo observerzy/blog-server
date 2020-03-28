@@ -1,6 +1,7 @@
 //import TestController from "@/contoller/test";
 //报错？
 import TestController from "../contoller/test";
+import ArticleController from "../contoller/article";
 export interface RouteItem {
     path: string;
     method: "get" | "post" | "put" | "delete";
@@ -27,5 +28,10 @@ export const AppRoutes: RouteItem[] = [
         path: "/app/login",
         method: "post",
         action: TestController.login
+    },
+    {
+        path: "/app/queryArticleList",
+        method: "post",
+        action: ArticleController.quertArticleList
     }
 ];

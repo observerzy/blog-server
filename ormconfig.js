@@ -1,7 +1,7 @@
 // typeorm配置
 module.exports = {
     type: "mysql",
-    host: "106.54.222.135",
+    host: "localhost",
     port: 3306,
     username: "root",
     password: "poi$5574",
