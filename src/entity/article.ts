@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
+//声明Article类时，其类型也被声明
 class Article {
     @PrimaryGeneratedColumn()
-    articleId: number;
+    articleId?: number;
     @Column({ type: "varchar", length: 64 })
     title: string;
     @Column({ type: "varchar", length: 1024 })

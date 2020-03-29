@@ -32,6 +32,11 @@ export const AppRoutes: RouteItem[] = [
     {
         path: "/app/queryArticleList",
         method: "post",
-        action: ArticleController.quertArticleList
+        action: ArticleController.queryArticleList
+    },
+    {
+        path: "/app/saveArticle",
+        method: "post",
+        action: ArticleController.saveArticle
     }
 ];
