@@ -17,6 +17,7 @@
         "@types/koa-router": "^7.4.0",
         "@types/koa2-cors": "^2.0.1",
         "koa": "^2.11.0",
+        "moment": "^2.24.0",
         "nodemon": "^2.0.2",
         "ts-node": "^8.6.2",
         "typescript": "^3.8.3"

@@ -1,6 +1,7 @@
 import { Context } from "koa";
 import { makeRespData } from "../common/common";
 import service from "../service/article";
+import moment from "moment";
 
 //保存类
 class ArticleController {
@@ -9,16 +10,28 @@ class ArticleController {
         ctx.body = makeRespData({ retCode: "0" }, articleList);
     }
     async saveArticle(ctx: Context) {
-        console.log(ctx.request.body);
+        const {
+            title = "",
+            content = "",
+            belong = "",
+            userId = "",
+            userName = ""
+        } = ctx.request.body;
         const params = {
-            title: "文章一",
-            content: "内容一",
-            belong: "node.js",
-            userId: "10001",
-            userName: "刘子艺",
-            time: "2020-03-30 12:11:11"
+            title,
+            content,
+            belong,
+            userId,
+            userName,
+            time: moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
         };
-        const saveArticle = await service.saveArticle(params);
+        let saveArticle = {};
+        try {
+            await service.saveArticle(params);
+            saveArticle = { errorMsg: "保存成功" };
+        } catch (error) {
+            saveArticle = { errorMsg: "保存失败" };
+        }
         ctx.body = makeRespData(saveArticle);
     }
 }

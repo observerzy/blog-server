@@ -1,20 +1,15 @@
 import { getManager } from "typeorm";
 import Article from "../entity/article";
 
-class Service {
+class ArticleService {
     async queryArticleList() {
         const articleRepository = getManager().getRepository(Article);
         return await articleRepository.find();
     }
     async saveArticle(params: Article) {
         const articleRepository = getManager().getRepository(Article);
-        try {
-            await articleRepository.save(params);
-            return { errorMsg: "保存成功" };
-        } catch (error) {
-            return { errorMsg: "保存失败" };
-        }
+        return await articleRepository.save(params);
     }
 }
 
-export default new Service();
+export default new ArticleService();
