@@ -6,8 +6,18 @@ import moment from "moment";
 //保存类
 class ArticleController {
     async queryArticleList(ctx: Context) {
-        const articleList = await service.queryArticleList();
-        ctx.body = makeRespData({ retCode: "0" }, articleList);
+        const { pagination } = ctx.request.body;
+        const serviceResp = await service.queryArticleList(pagination);
+        ctx.body = makeRespData(
+            { retCode: "0" },
+            {
+                articleList: serviceResp.articleList,
+                pagination: {
+                    ...pagination,
+                    total: serviceResp.total,
+                },
+            }
+        );
     }
     async saveArticle(ctx: Context) {
         const {
@@ -15,7 +25,7 @@ class ArticleController {
             content = "",
             belong = "",
             userId = "",
-            userName = ""
+            userName = "",
         } = ctx.request.body;
         const params = {
             title,
@@ -23,7 +33,7 @@ class ArticleController {
             belong,
             userId,
             userName,
-            time: moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+            time: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
         };
         let saveArticle = {};
         try {

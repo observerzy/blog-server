@@ -1,10 +1,33 @@
 import { getManager } from "typeorm";
 import Article from "../entity/article";
 
+export type PaginationBean = {
+    total: number;
+    offset: number;
+    limit: number;
+};
+
 class ArticleService {
-    async queryArticleList() {
+    async queryArticleList(pagination: PaginationBean) {
         const articleRepository = getManager().getRepository(Article);
-        return await articleRepository.find();
+        let articleList: any;
+        let total: number;
+        try {
+            articleList = await articleRepository
+                .createQueryBuilder("article")
+                .offset(pagination.offset)
+                .limit(pagination.limit)
+                .getMany();
+            total = await articleRepository
+                .createQueryBuilder("article")
+                .getCount();
+        } catch (error) {
+            console.log("queryArticleList err:", error);
+        }
+        return {
+            articleList,
+            total,
+        };
     }
     async saveArticle(params: Article) {
         const articleRepository = getManager().getRepository(Article);
