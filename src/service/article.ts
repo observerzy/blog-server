@@ -17,6 +17,7 @@ class ArticleService {
                 .createQueryBuilder("article")
                 .offset(pagination.offset)
                 .limit(pagination.limit)
+                .orderBy("article.time", "DESC")
                 .getMany();
             total = await articleRepository
                 .createQueryBuilder("article")

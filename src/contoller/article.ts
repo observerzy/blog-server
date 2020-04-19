@@ -20,19 +20,13 @@ class ArticleController {
         );
     }
     async saveArticle(ctx: Context) {
-        const {
-            title = "",
-            content = "",
-            belong = "",
-            userId = "",
-            userName = "",
-        } = ctx.request.body;
+        const { title, content, belong, userId, userName } = ctx.request.body;
         const params = {
             title,
             content,
             belong,
-            userId,
-            userName,
+            userId: "10001",
+            userName: "刘子艺",
             time: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
         };
         let saveArticle = {};
