@@ -8,7 +8,7 @@ class TestController {
         console.log("get:", ctx.query);
         console.log("post:", ctx.request.body);
         ctx.body = {
-            data: "你好"
+            data: "你好",
         };
     }
     // 注册
@@ -24,7 +24,7 @@ class TestController {
         const { username, password } = ctx.request.body;
         const userRepository = getManager().getRepository(User);
         const targerUser = await userRepository.findOne({
-            where: { username }
+            where: { username },
         });
         let res;
         if (targerUser.password === password) {
@@ -37,15 +37,15 @@ class TestController {
     async quertUserInfo(ctx: Context) {
         const userRepository = getManager().getRepository(User);
         const userInfo = await userRepository.findOne({
-            where: { id: 1 }
+            where: { id: 1 },
         });
         ctx.body = {
             header: {
                 retCode: "0",
-                errorNo: "",
-                errorMsg: ""
+                errorNum: "",
+                errorMsg: "",
             },
-            body: userInfo
+            body: userInfo,
         };
     }
 }
