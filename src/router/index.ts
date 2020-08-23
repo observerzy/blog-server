@@ -10,33 +10,33 @@ export interface RouteItem {
 
 export const AppRoutes: RouteItem[] = [
     {
-        path: "/app/queryUserInfo",
+        path: "/api/queryUserInfo",
         method: "post",
-        action: TestController.quertUserInfo
+        action: TestController.quertUserInfo,
     },
     {
-        path: "/app/test",
+        path: "/api/test",
         method: "get",
-        action: TestController.test
+        action: TestController.test,
     },
     {
-        path: "/app/register",
+        path: "/api/register",
         method: "post",
-        action: TestController.register
+        action: TestController.register,
     },
     {
-        path: "/app/login",
+        path: "/api/login",
         method: "post",
-        action: TestController.login
+        action: TestController.login,
     },
     {
-        path: "/app/queryArticleList",
+        path: "/api/queryArticleList",
         method: "post",
-        action: ArticleController.queryArticleList
+        action: ArticleController.queryArticleList,
     },
     {
-        path: "/app/saveArticle",
+        path: "/api/saveArticle",
         method: "post",
-        action: ArticleController.saveArticle
-    }
+        action: ArticleController.saveArticle,
+    },
 ];
