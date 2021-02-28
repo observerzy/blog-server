@@ -6,8 +6,8 @@ import moment from "moment";
 //保存类
 class ArticleController {
     async queryArticleList(ctx: Context) {
-        const { pagination } = ctx.request.body;
-        const serviceResp = await service.queryArticleList(pagination);
+        const { pagination, query } = ctx.request.body;
+        const serviceResp = await service.queryArticleList(pagination, query);
         ctx.body = makeRespData(
             { retCode: "0" },
             {

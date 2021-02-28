@@ -8,19 +8,28 @@ export type PaginationBean = {
 };
 
 class ArticleService {
-    async queryArticleList(pagination: PaginationBean) {
+    async queryArticleList(
+        pagination: PaginationBean,
+        query?: Record<string, any>
+    ) {
+        const { title } = query || {};
         const articleRepository = getManager().getRepository(Article);
         let articleList: any;
         let total: number;
+        const articleBuilder = articleRepository.createQueryBuilder("article");
         try {
-            articleList = await articleRepository
-                .createQueryBuilder("article")
+            articleList = await articleBuilder
                 .offset(pagination.offset)
                 .limit(pagination.limit)
                 .orderBy("article.time", "DESC")
+                .where("article.title like :title", {
+                    title: "%" + (title || "") + "%",
+                })
                 .getMany();
-            total = await articleRepository
-                .createQueryBuilder("article")
+            total = await articleBuilder
+                .where("article.title like :title", {
+                    title: "%" + (title || "") + "%",
+                })
                 .getCount();
         } catch (error) {
             console.log("queryArticleList err:", error);
