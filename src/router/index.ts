@@ -1,6 +1,6 @@
-//import TestController from "@/contoller/test";
+//import UserController from "@/contoller/test";
 //报错？
-import TestController from "../contoller/test";
+import UserController from "../contoller/user";
 import ArticleController from "../contoller/article";
 export interface RouteItem {
     path: string;
@@ -12,22 +12,22 @@ export const AppRoutes: RouteItem[] = [
     {
         path: "/api/queryUserInfo",
         method: "post",
-        action: TestController.quertUserInfo,
+        action: UserController.quertUserInfo,
     },
     {
         path: "/api/test",
         method: "get",
-        action: TestController.test,
+        action: UserController.test,
     },
     {
-        path: "/api/register",
+        path: "/api/v1/user/register",
         method: "post",
-        action: TestController.register,
+        action: UserController.register,
     },
     {
         path: "/api/login",
         method: "post",
-        action: TestController.login,
+        action: UserController.login,
     },
     {
         path: "/api/queryArticleList",
