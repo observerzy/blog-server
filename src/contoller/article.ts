@@ -38,6 +38,9 @@ class ArticleController {
         }
         ctx.body = makeRespData(saveArticle);
     }
+    async getArticle(ctx: Context) {
+        ctx.body={test:"666"}
+    }
 }
 
 export default new ArticleController();

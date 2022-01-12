@@ -39,4 +39,9 @@ export const AppRoutes: RouteItem[] = [
         method: "post",
         action: ArticleController.saveArticle,
     },
+    {
+        path: "/api/getArticle",
+        method: "get",
+        action: ArticleController.getArticle,
+    },
 ];
